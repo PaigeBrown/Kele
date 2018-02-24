@@ -29,6 +29,11 @@ class Kele
       JSON.parse(response.body)
     end
 
+    def get_mentor_availability(mentor_id)
+      response = self.class.get("/mentors/#{mentor_id}/student_availability", headers: { "authorization" => @user_auth_token })
+      JSON.parse(response.body)
+    end
+
     def get_messages(page = 0)
         if page > 0
             message_url = "/message_threads?page=#{page}"
@@ -47,7 +52,8 @@ class Kele
         subject: subject,
         stripped_text: stripped_text
       })
-    
+      response.success? puts "Your message has been sent by some miracle!"
+
     end
 
 end
