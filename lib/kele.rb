@@ -29,11 +29,19 @@ class Kele
       JSON.parse(response.body)
     end
 
-    # def get_mentor_availability(mentor_id)
-    #can we do this without the questionable id
-    #   response = self.class.get("/mentors/#{mentor_id}/student_availability", headers: { "authorization" => @user_auth_token })
-    #   JSON.parse(response.body)
-    # 
+ #  These are more ids... which Id is the right id to use?
+
+   # "id": 92985,
+ # "student_id": 245121,
+ # "mentor_id": 946,
+ # "enrollment_id": 11218,
+
+    def get_mentor_availability(mentor_id)
+
+      response = self.class.get("/mentors/#{mentor_id}/student_availability", headers: { "authorization" => @user_auth_token })
+      JSON.parse(response.body)
+    end
+    #
     # or maybe
     #   open = []
     #   JSON.parse(response.body).each do |availability|
