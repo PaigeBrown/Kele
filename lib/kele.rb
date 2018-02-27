@@ -21,6 +21,7 @@ class Kele
   def get_me
     response = self.class.get('/users/me', headers: { "authorization" => @user_auth_token })
     JSON.parse(response.body)
+    @user_id = @user["current_enrollment"]["id"]
   end
 
   def get_mentor_availability
